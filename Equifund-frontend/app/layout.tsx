@@ -1,12 +1,21 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" })
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" })
+import AppKitProvider from "@/context/appkit-provider";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   title: "EquiFund - Quadratic Funding Platform",
@@ -30,19 +39,32 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
+  const cookieStore = cookies();
+  const serialisedCookies =
+    typeof cookieStore.getAll === "function"
+      ? cookieStore
+          .getAll()
+          .map(({ name, value }) => `${name}=${value}`)
+          .join("; ")
+      : "";
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} font-sans antialiased`}
+      >
+        <AppKitProvider cookies={serialisedCookies || null}>
+          {children}
+          <Analytics />
+        </AppKitProvider>
       </body>
     </html>
-  )
+  );
 }
