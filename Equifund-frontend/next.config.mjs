@@ -6,6 +6,28 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-}
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        "pino-pretty": false,
+        lokijs: false,
+        encoding: false,
+      },
+    },
+  },
+  webpack: (config) => {
+    const externals = ["pino-pretty", "lokijs", "encoding"];
 
-export default nextConfig
+    if (!config.externals) {
+      config.externals = externals;
+    } else if (Array.isArray(config.externals)) {
+      config.externals.push(...externals);
+    } else {
+      config.externals = [config.externals, ...externals];
+    }
+
+    return config;
+  },
+};
+
+export default nextConfig;
