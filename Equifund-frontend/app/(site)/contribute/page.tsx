@@ -2,6 +2,7 @@
 
 import Hero from "@/components/hero";
 import Link from "next/link";
+import ContributeProjects from "@/components/contribute-projects";
 
 const steps = [
   {
@@ -50,10 +51,14 @@ export default function ContributePage() {
       <section id="contribute-form" className="px-4">
         <div className="max-w-6xl mx-auto grid gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="glass-morphism rounded-3xl p-8 lg:p-10 shadow-xl border border-primary/10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Contribution Launchpad</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Contribution Launchpad
+            </h2>
             <p className="text-muted-foreground text-lg mb-10">
-              This flow will guide you through connecting your wallet, selecting a project, and confirming your contribution. Live contract
-              interactions are coming next—today you're exploring the full journey and UI.
+              This flow will guide you through connecting your wallet, selecting
+              a project, and confirming your contribution. Live contract
+              interactions are coming next—today you're exploring the full
+              journey and UI.
             </p>
 
             <div className="space-y-6">
@@ -72,7 +77,9 @@ export default function ContributePage() {
                       </span>
                       <h3 className="text-lg font-semibold">{step.title}</h3>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -96,10 +103,14 @@ export default function ContributePage() {
 
           <aside className="flex flex-col gap-6">
             <div className="glass-morphism rounded-3xl border border-primary/10 p-8">
-              <h3 className="text-2xl font-semibold mb-4">Why Contributions Matter</h3>
+              <h3 className="text-2xl font-semibold mb-4">
+                Why Contributions Matter
+              </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Every contribution—no matter the size—signals community support. Quadratic funding boosts projects with broad backing,
-                ensuring that public goods reflect the collective will rather than a single whale donor.
+                Every contribution—no matter the size—signals community support.
+                Quadratic funding boosts projects with broad backing, ensuring
+                that public goods reflect the collective will rather than a
+                single whale donor.
               </p>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>✅ Matching pools amplify smaller donations</li>
@@ -112,23 +123,34 @@ export default function ContributePage() {
             <div className="rounded-3xl border border-secondary/20 bg-secondary/10 p-8">
               <h3 className="text-xl font-semibold mb-4">Coming Soon</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Direct contract interactions are in progress. Soon this page will feature a fully functional contribution form powered by
-                wagmi, viem, and the EquiFund smart contracts. Stay tuned for live transactions, real-time match previews, and
-                contribution histories.
+                Direct contract interactions are in progress. Soon this page
+                will feature a fully functional contribution form powered by
+                wagmi, viem, and the EquiFund smart contracts. Stay tuned for
+                live transactions, real-time match previews, and contribution
+                histories.
               </p>
             </div>
           </aside>
         </div>
       </section>
 
+      <ContributeProjects />
+
       <section className="px-4">
         <div className="max-w-6xl mx-auto rounded-3xl border border-primary/10 bg-primary/5 p-8 md:p-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Contribution FAQs</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Contribution FAQs
+          </h2>
           <div className="grid gap-6 md:grid-cols-3">
             {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-2xl bg-background/60 p-6 shadow-sm">
+              <div
+                key={faq.question}
+                className="rounded-2xl bg-background/60 p-6 shadow-sm"
+              >
                 <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -137,9 +159,12 @@ export default function ContributePage() {
 
       <section className="px-4">
         <div className="max-w-5xl mx-auto rounded-3xl bg-linear-to-r from-secondary/10 to-primary/10 p-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to amplify a project?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to amplify a project?
+          </h2>
           <p className="text-muted-foreground text-lg mb-6">
-            Connect your wallet, pick a public good that inspires you, and let the quadratic magic do the rest.
+            Connect your wallet, pick a public good that inspires you, and let
+            the quadratic magic do the rest.
           </p>
           <Link
             href="/projects"
