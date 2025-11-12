@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 const projects = [
   {
     id: 1,
@@ -35,7 +37,7 @@ const projects = [
 
 export default function ProjectsGrid() {
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-to-b from-card/30 to-background">
+    <section id="projects" className="py-20 px-4 bg-linear-to-b from-card/30 to-background">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
         <p className="text-muted-foreground mb-16 text-lg">Support verified public goods making a difference</p>
@@ -48,7 +50,7 @@ export default function ProjectsGrid() {
               style={{ animationDelay: `${idx * 100}ms` }}
             >
               {/* Project Image */}
-              <div className="h-40 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden relative group">
+              <div className="h-40 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden relative group">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.name}
@@ -69,7 +71,7 @@ export default function ProjectsGrid() {
                   </div>
                   <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-primary to-secondary"
+                      className="h-full bg-linear-to-r from-primary to-secondary"
                       style={{ width: `${project.progress}%` }}
                     />
                   </div>
@@ -93,9 +95,12 @@ export default function ProjectsGrid() {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold hover:shadow-lg glow-indigo transition-all duration-300 flex items-center justify-center gap-2">
+                <Link
+                  href="/contribute"
+                  className="w-full px-4 py-3 rounded-lg bg-linear-to-r from-primary to-secondary text-primary-foreground font-semibold hover:shadow-lg glow-indigo transition-all duration-300 flex items-center justify-center gap-2"
+                >
                   💰 Contribute
-                </button>
+                </Link>
               </div>
             </div>
           ))}
